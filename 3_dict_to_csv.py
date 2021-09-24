@@ -1,3 +1,4 @@
+import csv
 """
 
 Домашнее задание №2
@@ -10,12 +11,23 @@
 
 """
 
+employees = [{'name': 'Olga', 'age': 25, 'job': 'Programmer'},
+                {'name': 'Sam', 'age': 18, 'job': 'Junior'},
+                {'name': 'Anny', 'age': 17, 'job': 'Junior'},
+                {'name': 'Antony', 'age': 55, 'job': 'Manager'},
+                {'name': 'Max', 'age': 41, 'job': 'CV'}]
+
 def main():
     """
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    with open('company.csv', 'w', encoding='utf-8', newline='') as f:
+        fields = ['name', 'age', 'job']
+        writer = csv.DictWriter(f, fields, delimiter=';')
+        writer.writeheader()
+        for employee in employees:
+            writer.writerow(employee)
 
 if __name__ == "__main__":
     main()

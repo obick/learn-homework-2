@@ -1,3 +1,5 @@
+import urllib.request
+
 """
 Домашнее задание №2
 
@@ -16,7 +18,15 @@ def main():
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    
+    with open('referat.txt', 'r', encoding='utf-8')  as f:
+        content = f.read()
+        print("длина строки " + str(len(content)))
+        print("количество слов " + str(len(content.split())))
+        sign_replace = content.replace('.', '!')
+    
+    with open('referat2.txt', 'w', encoding='utf-8') as f:
+        f.write(sign_replace)
 
 if __name__ == "__main__":
     main()
